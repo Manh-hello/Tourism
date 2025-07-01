@@ -341,3 +341,297 @@ loadingStyle.textContent = `
 document.head.appendChild(loadingStyle);
 
 console.log('Phong Nam Tourism Village website loaded successfully!');
+
+
+
+
+// slide img 
+
+class ImageSlider {
+    constructor() {
+        this.currentSlide = 0;
+        this.imagesPerSlide = 5;
+        this.totalImages = 15;
+        this.totalSlides = Math.ceil(this.totalImages / this.imagesPerSlide);
+        
+        this.sliderTrack = document.getElementById('slider-track');
+        this.prevBtn = document.getElementById('prev-btn');
+        this.nextBtn = document.getElementById('next-btn');
+        this.indicatorsContainer = document.getElementById('indicators2');
+        this.currentSlideSpan = document.getElementById('current-slide');
+        this.totalSlidesSpan = document.getElementById('total-slides');
+        
+        this.init();
+    }
+    
+    init() {
+        this.createIndicators();
+        this.updateSlider();
+        this.bindEvents();
+        this.updateResponsiveSettings();
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            this.updateResponsiveSettings();
+            this.updateSlider();
+        });
+    }
+    
+    updateResponsiveSettings() {
+        const width = window.innerWidth;
+        
+        if (width <= 480) {
+            this.imagesPerSlide = 1;
+        } else if (width <= 768) {
+            this.imagesPerSlide = 2;
+        } else {
+            this.imagesPerSlide = 5;
+        }
+        
+        this.totalSlides = Math.ceil(this.totalImages / this.imagesPerSlide);
+        
+        // Reset to first slide if current slide is out of bounds
+        if (this.currentSlide >= this.totalSlides) {
+            this.currentSlide = 0;
+        }
+        
+        this.createIndicators();
+        this.updateProgressText();
+    }
+    
+    createIndicators() {
+        this.indicatorsContainer.innerHTML = '';
+        
+        for (let i = 0; i < this.totalSlides; i++) {
+            const indicator = document.createElement('div');
+            indicator.className = `indicator2 ${i === this.currentSlide ? 'active' : ''}`;
+            indicator.addEventListener('click', () => this.goToSlide(i));
+            this.indicatorsContainer.appendChild(indicator);
+        }
+    }
+    
+    bindEvents() {
+        this.prevBtn.addEventListener('click', () => this.prevSlide());
+        this.nextBtn.addEventListener('click', () => this.nextSlide());
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                this.prevSlide();
+            } else if (e.key === 'ArrowRight') {
+                this.nextSlide();
+            }
+        });
+        
+        // Touch/swipe support
+        let startX = 0;
+        let endX = 0;
+        
+        this.sliderTrack.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+        
+        this.sliderTrack.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            this.handleSwipe();
+        });
+        
+        // Mouse drag support
+        let isDragging = false;
+        let startMouseX = 0;
+        let endMouseX = 0;
+        
+        this.sliderTrack.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            startMouseX = e.clientX;
+            this.sliderTrack.style.cursor = 'grabbing';
+        });
+        
+        document.addEventListener('mousemove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+        });
+        
+        document.addEventListener('mouseup', (e) => {
+            if (!isDragging) return;
+            isDragging = false;
+            endMouseX = e.clientX;
+            this.sliderTrack.style.cursor = 'grab';
+            
+            const diffX = startMouseX - endMouseX;
+            if (Math.abs(diffX) > 50) {
+                if (diffX > 0) {
+                    this.nextSlide();
+                } else {
+                    this.prevSlide();
+                }
+            }
+        });
+    }
+    
+    handleSwipe() {
+        const diffX = startX - endX;
+        const minSwipeDistance = 50;
+        
+        if (Math.abs(diffX) > minSwipeDistance) {
+            if (diffX > 0) {
+                this.nextSlide();
+            } else {
+                this.prevSlide();
+            }
+        }
+    }
+    
+    nextSlide() {
+        this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+        this.updateSlider();
+    }
+    
+    prevSlide() {
+        this.currentSlide = this.currentSlide === 0 ? this.totalSlides - 1 : this.currentSlide - 1;
+        this.updateSlider();
+    }
+    
+    goToSlide(slideIndex) {
+        this.currentSlide = slideIndex;
+        this.updateSlider();
+    }
+    
+    updateSlider() {
+        const translateX = -this.currentSlide * 100;
+        this.sliderTrack.style.transform = `translateX(${translateX}%)`;
+        
+        this.updateIndicators();
+        this.updateProgressText();
+        this.updateButtonStates();
+        
+        // Add animation class for smooth transition
+        this.sliderTrack.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+    }
+    
+    updateIndicators() {
+        const indicators = this.indicatorsContainer.querySelectorAll('.indicator2');
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === this.currentSlide);
+        });
+    }
+    
+    updateProgressText() {
+        this.currentSlideSpan.textContent = this.currentSlide + 1;
+        this.totalSlidesSpan.textContent = this.totalSlides;
+    }
+    
+    updateButtonStates() {
+        // Optional: Disable buttons at start/end (remove if you want infinite loop)
+        // this.prevBtn.disabled = this.currentSlide === 0;
+        // this.nextBtn.disabled = this.currentSlide === this.totalSlides - 1;
+    }
+    
+    // Auto-play functionality (optional)
+    startAutoPlay(interval = 5000) {
+        this.autoPlayInterval = setInterval(() => {
+            this.nextSlide();
+        }, interval);
+    }
+    
+    stopAutoPlay() {
+        if (this.autoPlayInterval) {
+            clearInterval(this.autoPlayInterval);
+        }
+    }
+    
+    // Pause auto-play on hover
+    enableAutoPlayPause() {
+        const slider = document.querySelector('.slider');
+        
+        slider.addEventListener('mouseenter', () => {
+            this.stopAutoPlay();
+        });
+        
+        slider.addEventListener('mouseleave', () => {
+            this.startAutoPlay();
+        });
+    }
+}
+
+// Initialize slider when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    const slider = new ImageSlider();
+    
+    // Optional: Enable auto-play
+    // slider.startAutoPlay(4000);
+    // slider.enableAutoPlayPause();
+    
+    // Add loading animation to images
+    const images = document.querySelectorAll('.card-image img');
+    images.forEach((img, index) => {
+        img.style.animationDelay = `${index * 0.1}s`;
+        
+        img.addEventListener('load', () => {
+            img.style.opacity = '1';
+        });
+        
+        // Handle image loading errors
+        img.addEventListener('error', () => {
+            img.src = 'https://via.placeholder.com/400x500/e2e8f0/64748b?text=Image+Not+Found';
+        });
+    });
+    
+    // Add smooth scroll behavior
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+    
+    // Performance optimization: Lazy loading for images
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src || img.src;
+                    img.classList.remove('lazy');
+                    observer.unobserve(img);
+                }
+            });
+        });
+        
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+});
+
+// Add CSS custom properties for dynamic theming
+document.documentElement.style.setProperty('--primary-color', '#3b82f6');
+document.documentElement.style.setProperty('--secondary-color', '#1e293b');
+document.documentElement.style.setProperty('--accent-color', '#64748b');
+
+// Utility function for debouncing resize events
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Add performance monitoring (optional)
+if ('performance' in window) {
+    window.addEventListener('load', () => {
+        const loadTime = performance.now();
+        console.log(`Page loaded in ${loadTime.toFixed(2)}ms`);
+    });
+}
