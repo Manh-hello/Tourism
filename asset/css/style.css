@@ -633,6 +633,30 @@ section {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
+.pricing-card:nth-child(1) .pricing-header {
+    background-image: url('../img/img27.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.pricing-card:nth-child(2) .pricing-header {
+    background-image: url('../img/img28.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.pricing-card:nth-child(3) .pricing-header {
+    background-image: url('../img/img29.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.pricing-card:nth-child(4) .pricing-header {
+    background-image: url('../img/img30.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 .pricing-header {
     background: linear-gradient(135deg, #16a34a, #15803d);
     color: white;
