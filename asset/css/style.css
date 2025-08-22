@@ -287,7 +287,7 @@ section {
     color: rgba(255, 255, 255, 0.8);
 }
 
-.section-subtitle{
+.section-subtitle {
     font-size: 1.5rem;
     text-align: center;
     margin-bottom: 3rem;
@@ -311,7 +311,14 @@ section {
     font-size: 1.1rem;
     line-height: 1.8;
     color: #4b5563;
+    letter-spacing: 0.6px;
     margin-bottom: 1.5rem;
+}
+
+.about-paragraph strong {
+    color: black;
+    font-size: large;
+    font-weight: 500;
 }
 
 .image-grid {
@@ -462,6 +469,7 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
+    align-items: start;
 }
 
 .audience-card {
@@ -528,62 +536,141 @@ section {
     line-height: 1.6;
 }
 
+.audience-detail {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0 1rem;
+    border-radius: 10px;
+    margin-top: 1rem;
+}
+
+.audience-card:hover .audience-detail {
+    opacity: 1;
+    max-height: 600px;
+    padding: 1.5rem;
+}
+
+.audience-detail h4 {
+    color: #1f2937;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.audience-detail ul {
+    list-style: none;
+    margin-bottom: 1rem;
+}
+
+.audience-detail li {
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.audience-detail li::before {
+    content: "•";
+    color: #10b981;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.audience-detail strong{
+    color: black;
+    font-weight: 500;
+
+}
+
+.audience-detail p {
+    color: #4b5563;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.down-wrap {
+    color: #6b7280;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    animation: bounce 2s infinite;
+}
+
+.audience-card:hover .down-wrap {
+    display: none;
+}
+
 /* camping */
-.camping{
+.camping {
     background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
     position: relative;
 }
-.section-subtitle2{
+
+.section-subtitle2 {
     font-size: 1.5rem;
     text-align: center;
     margin-bottom: 3rem;
     color: #16a34a;
     font-weight: 500;
 }
-.camping-intro{
+
+.camping-intro {
     display: grid;
     gap: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(400px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     margin-bottom: 4rem;
 }
-.intro-card{
+
+.intro-card {
     background: white;
     padding: 2rem;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
+
 .intro-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
+
 .intro-card h3 {
     font-size: 1.5rem;
     font-weight: 600;
     color: #16a34a;
     margin-bottom: 1rem;
 }
+
 .intro-card p {
     line-height: 1.7;
     color: #374151;
 }
-.camping-overview{
+
+.camping-overview {
     text-align: center;
     margin-bottom: 4rem;
 }
-.camping-overview h3{
+
+.camping-overview h3 {
     font-size: 2rem;
     font-weight: 600;
     margin-bottom: 2rem;
     color: #16a34a;
 }
-.camping-list{
+
+.camping-list {
     display: flex;
     gap: 3rem;
     flex-wrap: wrap;
     justify-content: center;
 }
-.camping-item{
+
+.camping-item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -595,21 +682,26 @@ section {
     transition: all 0.3s ease;
     min-width: 150px;
 }
-.camping-item:hover{
+
+.camping-item:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
-.camping-icon{
+
+.camping-icon {
     font-size: 2.5rem;
 }
-.camping-item span{
+
+.camping-item span {
     font-weight: 500;
     color: #374151;
     text-align: center;
 }
+
 .pricing-section {
     margin-bottom: 4rem;
 }
+
 .pricing-section h3 {
     font-size: 2.5rem;
     font-weight: 700;
@@ -617,11 +709,13 @@ section {
     color: #16a34a;
     margin-bottom: 3rem;
 }
+
 .pricing-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
 }
+
 .pricing-card {
     background: white;
     border-radius: 20px;
@@ -630,103 +724,128 @@ section {
     transition: all 0.3s ease;
     position: relative;
 }
+
 .pricing-card:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
+
 .pricing-card:nth-child(1) .pricing-header {
     background-image: url('../img/img27.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
+
 .pricing-card:nth-child(2) .pricing-header {
     background-image: url('../img/img28.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
+
 .pricing-card:nth-child(3) .pricing-header {
     background-image: url('../img/img29.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
+
 .pricing-card:nth-child(4) .pricing-header {
     background-image: url('../img/img30.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
+
 .pricing-header {
     background: linear-gradient(135deg, #16a34a, #15803d);
     color: white;
     padding: 2rem;
     text-align: center;
 }
+
 .pricing-header h4 {
     font-size: 1.3rem;
     font-weight: 600;
     margin-bottom: 1rem;
 }
+
 .price {
     font-size: 2.5rem;
     font-weight: 700;
 }
+
 .price span {
     font-size: 1rem;
     font-weight: 400;
     opacity: 0.8;
 }
+
 .pricing-body {
     padding: 2rem;
 }
+
 .age-pricing {
     background: #f0fdf4;
     padding: 1rem;
     border-radius: 10px;
     margin-bottom: 1.5rem;
 }
+
 .age-pricing p {
     margin-bottom: 0.5rem;
     color: #374151;
 }
+
 .age-pricing p:last-child {
     margin-bottom: 0;
 }
-.includes, .excludes {
+
+.includes,
+.excludes {
     margin-bottom: 1.5rem;
 }
+
 .includes h5 {
     color: #16a34a;
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
+
 .excludes h5 {
     color: #dc2626;
     font-weight: 600;
     margin-bottom: 0.5rem;
 }
-.includes ul, .excludes ul {
+
+.includes ul,
+.excludes ul {
     list-style: none;
     padding: 0;
 }
-.includes li, .excludes li {
+
+.includes li,
+.excludes li {
     padding: 0.25rem 0;
     font-size: 0.9rem;
 }
+
 .includes li {
     color: #16a34a;
 }
+
 .excludes li {
     color: #dc2626;
 }
+
 .camping-contact {
     background: white;
     padding: 3rem;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
+
 .camping-contact h3 {
     font-size: 2rem;
     font-weight: 600;
@@ -734,41 +853,49 @@ section {
     text-align: center;
     margin-bottom: 2rem;
 }
+
 .contact-info-camping {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
 }
+
 .contact-item-camping {
     text-align: center;
 }
+
 .contact-item-camping h4 {
     font-size: 1.2rem;
     font-weight: 600;
     color: #16a34a;
     margin-bottom: 0.5rem;
 }
+
 .contact-item-camping p {
     color: #6b7280;
     margin-bottom: 1rem;
 }
+
 .contact-details-camping {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
 }
+
 .contact-label {
     font-weight: 600;
     color: #374151;
     display: block;
     margin-bottom: 0.5rem;
 }
+
 .contact-phones {
     display: flex;
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
 }
+
 .contact-phones a,
 .contact-item-camping a {
     color: #16a34a;
@@ -776,6 +903,7 @@ section {
     font-weight: 500;
     transition: color 0.3s ease;
 }
+
 .contact-phones a:hover,
 .contact-item-camping a:hover {
     color: #15803d;
@@ -804,7 +932,7 @@ section {
     gap: 2rem;
 }
 
-.btn-slide{
+.btn-slide {
     display: flex;
     gap: 20px;
 }
@@ -897,12 +1025,10 @@ section {
 .card-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        transparent 60%,
-        rgba(0, 0, 0, 0.4) 100%
-    );
+    background: linear-gradient(to bottom,
+            transparent 0%,
+            transparent 60%,
+            rgba(0, 0, 0, 0.4) 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
@@ -923,7 +1049,7 @@ section {
 .indicators2 {
     display: flex;
     gap: 0.5rem;
-} 
+}
 
 .indicator2 {
     width: 12px;
@@ -1111,6 +1237,7 @@ section {
         opacity: 0;
         transform: translateY(30px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1292,50 +1419,50 @@ section {
         right: 20px;
     }
 
-     .slider {
+    .slider {
         padding: 2rem 1rem;
     }
-    
+
     .section-title {
         font-size: 2.5rem;
     }
-    
+
     .section-subtitle {
         font-size: 1.125rem;
     }
-    
+
     .slider-wrapper {
         flex-direction: column-reverse;
         gap: 2rem;
     }
-    
+
     .slide-btn {
         position: static;
         order: 2;
     }
-    
+
     .prev-btn {
         order: 1;
     }
-    
+
     .next-btn {
         order: 3;
     }
-    
+
     .slider-container {
         order: 2;
         width: 100%;
         padding: 1.5rem;
     }
-    
+
     .card {
         flex: 0 0 calc(50% - 1rem);
     }
-    
+
     .slider-track {
         gap: 1.5rem;
     }
-    
+
     .card-image {
         aspect-ratio: 4/5;
     }
@@ -1346,7 +1473,7 @@ section {
         padding: 0 15px;
     }
 
-    .container-slide{
+    .container-slide {
         padding: 0 15px;
     }
 
@@ -1366,33 +1493,37 @@ section {
     .contact-card {
         padding: 1.5rem;
     }
-    .slide-btn{
+
+    .slide-btn {
         width: 30px;
         height: 30px;
     }
+
     .section-title {
         font-size: 2rem;
     }
-    
+
     .card {
         flex: 0 0 calc(100% - 0.5rem);
     }
-    
+
     .slider-track {
         gap: 1rem;
     }
-    
+
     .slider-container {
         padding: 1rem;
     }
-    
+
     .card-image {
         aspect-ratio: 3/4;
     }
-    .camping-intro{
+
+    .camping-intro {
         grid-template-columns: 1fr;
     }
-    .camping-contact{
+
+    .camping-contact {
         padding: 1rem;
     }
 }
@@ -1417,6 +1548,7 @@ section {
 
 /* Print Styles */
 @media print {
+
     .navbar,
     .fab-button,
     .back-to-top,
@@ -1434,6 +1566,28 @@ section {
 @keyframes fadeIn {
     to {
         opacity: 1;
+    }
+}
+
+@-webkit-keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    to {
+        -webkit-transform: translateY(0);
+        transform: translateY(0)
+    }
+
+    40% {
+        -webkit-transform: translateY(-10px);
+        transform: translateY(-10px)
+    }
+
+    60% {
+        -webkit-transform: translateY(-5px);
+        transform: translateY(-5px)
     }
 }
 
