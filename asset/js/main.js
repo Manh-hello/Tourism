@@ -287,24 +287,24 @@ function handleSwipe() {
     }
 }
 
-// Preload Images
-function preloadImages() {
-    const imageUrls = [
-        'https://images.pexels.com/photos/1320684/pexels-photo-1320684.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080',
-        'https://images.pexels.com/photos/2131967/pexels-photo-2131967.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080',
-        'https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080',
-        'https://images.pexels.com/photos/1547813/pexels-photo-1547813.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080',
-        'https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080'
-    ];
+//// Preload Images
+// function preloadImages() {
+//     const imageUrls = [
+//         'https://images.pexels.com/photos/1320684/pexels-photo-1320684.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080',
+//         'https://images.pexels.com/photos/2131967/pexels-photo-2131967.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080',
+//         'https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080',
+//         'https://images.pexels.com/photos/1547813/pexels-photo-1547813.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080',
+//         'https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080'
+//     ];
     
-    imageUrls.forEach(url => {
-        const img = new Image();
-        img.src = url;
-    });
-}
+//     imageUrls.forEach(url => {
+//         const img = new Image();
+//         img.src = url;
+//     });
+// }
 
-// Initialize preloading
-preloadImages();
+// // Initialize preloading
+// preloadImages();
 
 // Performance optimization: Lazy loading for service images
 const serviceImages = document.querySelectorAll('.service-image img');
