@@ -165,7 +165,7 @@ body {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-size: clamp(1.8rem, 8vw, 4rem);
     font-weight: 800;
     margin-bottom: 1.5rem;
     animation: fadeInUp 1s ease-out;
@@ -265,7 +265,7 @@ section {
 }
 
 .section-title {
-    font-size: clamp(2rem, 5vw, 3rem);
+    font-size: clamp(1.4rem, 4vw, 3rem);
     font-weight: 700;
     text-align: center;
     margin-bottom: 3rem;
@@ -582,7 +582,7 @@ section {
     left: 0;
 }
 
-.audience-detail strong{
+.audience-detail strong {
     color: black;
     font-weight: 500;
 
@@ -848,7 +848,7 @@ section {
 .included-card {
     background: #fff;
     border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     max-width: 700px;
     width: 100%;
     padding: 24px 32px;
@@ -860,7 +860,7 @@ section {
 }
 
 .included-header h3 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     color: #333;
     margin-bottom: 8px;
 }
@@ -898,6 +898,67 @@ section {
     font-weight: bold;
 }
 
+/* gallery-camping */
+.gallery-camping {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.gallery-camping .gallery-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+}
+
+.gallery-wrap {
+    min-width: 25%;
+    box-sizing: border-box;
+    padding: 8px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
+.gallery-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #f1f4e7;
+    border: none;
+    color: black;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+
+.gallery-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.prev-btn-3 {
+    left: 10px;
+}
+
+.next-btn-3 {
+    right: 10px;
+}
 
 .camping-contact {
     background: white;
@@ -1397,6 +1458,13 @@ section {
 }
 
 /* Responsive Design */
+@media (max-width: 992px) {
+    .gallery-wrap {
+        min-width: 33.33%;
+        /* 3 ảnh */
+    }
+}
+
 @media (max-width: 768px) {
     .nav-menu {
         position: fixed;
@@ -1458,6 +1526,10 @@ section {
         grid-template-columns: 1fr;
     }
 
+    .gallery-wrap {
+        min-width: 50%;
+    }
+
     .contact-grid {
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
@@ -1481,10 +1553,6 @@ section {
 
     .slider {
         padding: 2rem 1rem;
-    }
-
-    .section-title {
-        font-size: 2.5rem;
     }
 
     .section-subtitle {
@@ -1550,6 +1618,10 @@ section {
         padding: 2rem 1.5rem;
     }
 
+    .gallery-wrap {
+        min-width: 100%;
+    }
+
     .contact-card {
         padding: 1.5rem;
     }
@@ -1557,10 +1629,6 @@ section {
     .slide-btn {
         width: 30px;
         height: 30px;
-    }
-
-    .section-title {
-        font-size: 2rem;
     }
 
     .card {

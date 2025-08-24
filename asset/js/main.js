@@ -59,11 +59,11 @@ function showSlide(index) {
     // Remove active class from all slides and indicators
     slides.forEach(slide => slide.classList.remove('active'));
     indicators.forEach(indicator => indicator.classList.remove('active'));
-    
+
     // Add active class to current slide and indicator
     slides[index].classList.add('active');
     indicators[index].classList.add('active');
-    
+
     currentSlide = index;
 }
 
@@ -130,11 +130,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Scroll Reveal Animation
 function revealOnScroll() {
     const reveals = document.querySelectorAll('.feature-card, .service-card, .audience-card, .contact-card, .about-text, .about-images');
-    
+
     reveals.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
         const elementVisible = 150;
-        
+
         if (elementTop < window.innerHeight - elementVisible) {
             element.classList.add('reveal');
             element.style.opacity = '1';
@@ -160,7 +160,7 @@ revealOnScroll();
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const parallaxElements = document.querySelectorAll('.carousel-slide img');
-    
+
     parallaxElements.forEach(element => {
         const speed = 0.5;
         element.style.transform = `translateY(${scrolled * speed}px)`;
@@ -169,25 +169,25 @@ window.addEventListener('scroll', () => {
 
 // CTA Button Interactions
 document.querySelectorAll('.cta-button').forEach(button => {
-    button.addEventListener('click', function(e) {
+    button.addEventListener('click', function (e) {
         // Add ripple effect
         const ripple = document.createElement('span');
         const rect = this.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
         const x = e.clientX - rect.left - size / 2;
         const y = e.clientY - rect.top - size / 2;
-        
+
         ripple.style.width = ripple.style.height = size + 'px';
         ripple.style.left = x + 'px';
         ripple.style.top = y + 'px';
         ripple.classList.add('ripple');
-        
+
         this.appendChild(ripple);
-        
+
         setTimeout(() => {
             ripple.remove();
         }, 600);
-        
+
         // Scroll to contact section
         const contactSection = document.getElementById('contact');
         if (contactSection) {
@@ -276,7 +276,7 @@ heroSection.addEventListener('touchend', (e) => {
 function handleSwipe() {
     const swipeThreshold = 50;
     const diff = touchStartX - touchEndX;
-    
+
     if (Math.abs(diff) > swipeThreshold) {
         if (diff > 0) {
             nextSlide();
@@ -286,25 +286,6 @@ function handleSwipe() {
         resetInterval();
     }
 }
-
-//// Preload Images
-// function preloadImages() {
-//     const imageUrls = [
-//         'https://images.pexels.com/photos/1320684/pexels-photo-1320684.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080',
-//         'https://images.pexels.com/photos/2131967/pexels-photo-2131967.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080',
-//         'https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080',
-//         'https://images.pexels.com/photos/1547813/pexels-photo-1547813.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080',
-//         'https://images.pexels.com/photos/1402787/pexels-photo-1402787.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1080'
-//     ];
-    
-//     imageUrls.forEach(url => {
-//         const img = new Image();
-//         img.src = url;
-//     });
-// }
-
-// // Initialize preloading
-// preloadImages();
 
 // Performance optimization: Lazy loading for service images
 const serviceImages = document.querySelectorAll('.service-image img');
@@ -342,9 +323,6 @@ document.head.appendChild(loadingStyle);
 
 console.log('Phong Nam Tourism Village website loaded successfully!');
 
-
-
-
 // slide img 
 
 class ImageSlider {
@@ -353,33 +331,33 @@ class ImageSlider {
         this.imagesPerSlide = 5;
         this.totalImages = 15;
         this.totalSlides = Math.ceil(this.totalImages / this.imagesPerSlide);
-        
+
         this.sliderTrack = document.getElementById('slider-track');
         this.prevBtn = document.getElementById('prev-btn');
         this.nextBtn = document.getElementById('next-btn');
         this.indicatorsContainer = document.getElementById('indicators2');
         this.currentSlideSpan = document.getElementById('current-slide');
         this.totalSlidesSpan = document.getElementById('total-slides');
-        
+
         this.init();
     }
-    
+
     init() {
         this.createIndicators();
         this.updateSlider();
         this.bindEvents();
         this.updateResponsiveSettings();
-        
+
         // Handle window resize
         window.addEventListener('resize', () => {
             this.updateResponsiveSettings();
             this.updateSlider();
         });
     }
-    
+
     updateResponsiveSettings() {
         const width = window.innerWidth;
-        
+
         if (width <= 480) {
             this.imagesPerSlide = 1;
         } else if (width <= 768) {
@@ -387,21 +365,21 @@ class ImageSlider {
         } else {
             this.imagesPerSlide = 5;
         }
-        
+
         this.totalSlides = Math.ceil(this.totalImages / this.imagesPerSlide);
-        
+
         // Reset to first slide if current slide is out of bounds
         if (this.currentSlide >= this.totalSlides) {
             this.currentSlide = 0;
         }
-        
+
         this.createIndicators();
         this.updateProgressText();
     }
-    
+
     createIndicators() {
         this.indicatorsContainer.innerHTML = '';
-        
+
         for (let i = 0; i < this.totalSlides; i++) {
             const indicator = document.createElement('div');
             indicator.className = `indicator2 ${i === this.currentSlide ? 'active' : ''}`;
@@ -409,11 +387,11 @@ class ImageSlider {
             this.indicatorsContainer.appendChild(indicator);
         }
     }
-    
+
     bindEvents() {
         this.prevBtn.addEventListener('click', () => this.prevSlide());
         this.nextBtn.addEventListener('click', () => this.nextSlide());
-        
+
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft') {
@@ -422,42 +400,42 @@ class ImageSlider {
                 this.nextSlide();
             }
         });
-        
+
         // Touch/swipe support
         let startX = 0;
         let endX = 0;
-        
+
         this.sliderTrack.addEventListener('touchstart', (e) => {
             startX = e.touches[0].clientX;
         });
-        
+
         this.sliderTrack.addEventListener('touchend', (e) => {
             endX = e.changedTouches[0].clientX;
             this.handleSwipe();
         });
-        
+
         // Mouse drag support
         let isDragging = false;
         let startMouseX = 0;
         let endMouseX = 0;
-        
+
         this.sliderTrack.addEventListener('mousedown', (e) => {
             isDragging = true;
             startMouseX = e.clientX;
             this.sliderTrack.style.cursor = 'grabbing';
         });
-        
+
         document.addEventListener('mousemove', (e) => {
             if (!isDragging) return;
             e.preventDefault();
         });
-        
+
         document.addEventListener('mouseup', (e) => {
             if (!isDragging) return;
             isDragging = false;
             endMouseX = e.clientX;
             this.sliderTrack.style.cursor = 'grab';
-            
+
             const diffX = startMouseX - endMouseX;
             if (Math.abs(diffX) > 50) {
                 if (diffX > 0) {
@@ -468,11 +446,11 @@ class ImageSlider {
             }
         });
     }
-    
+
     handleSwipe() {
         const diffX = startX - endX;
         const minSwipeDistance = 50;
-        
+
         if (Math.abs(diffX) > minSwipeDistance) {
             if (diffX > 0) {
                 this.nextSlide();
@@ -481,73 +459,73 @@ class ImageSlider {
             }
         }
     }
-    
+
     nextSlide() {
         this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
         this.updateSlider();
     }
-    
+
     prevSlide() {
         this.currentSlide = this.currentSlide === 0 ? this.totalSlides - 1 : this.currentSlide - 1;
         this.updateSlider();
     }
-    
+
     goToSlide(slideIndex) {
         this.currentSlide = slideIndex;
         this.updateSlider();
     }
-    
+
     updateSlider() {
         const translateX = -this.currentSlide * 100;
         this.sliderTrack.style.transform = `translateX(${translateX}%)`;
-        
+
         this.updateIndicators();
         this.updateProgressText();
         this.updateButtonStates();
-        
+
         // Add animation class for smooth transition
         this.sliderTrack.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
     }
-    
+
     updateIndicators() {
         const indicators = this.indicatorsContainer.querySelectorAll('.indicator2');
         indicators.forEach((indicator, index) => {
             indicator.classList.toggle('active', index === this.currentSlide);
         });
     }
-    
+
     updateProgressText() {
         this.currentSlideSpan.textContent = this.currentSlide + 1;
         this.totalSlidesSpan.textContent = this.totalSlides;
     }
-    
+
     updateButtonStates() {
         // Optional: Disable buttons at start/end (remove if you want infinite loop)
         // this.prevBtn.disabled = this.currentSlide === 0;
         // this.nextBtn.disabled = this.currentSlide === this.totalSlides - 1;
     }
-    
+
     // Auto-play functionality (optional)
     startAutoPlay(interval = 5000) {
         this.autoPlayInterval = setInterval(() => {
             this.nextSlide();
         }, interval);
     }
-    
+
     stopAutoPlay() {
         if (this.autoPlayInterval) {
             clearInterval(this.autoPlayInterval);
         }
     }
-    
+
     // Pause auto-play on hover
     enableAutoPlayPause() {
         const slider = document.querySelector('.slider');
-        
+
         slider.addEventListener('mouseenter', () => {
             this.stopAutoPlay();
         });
-        
+
         slider.addEventListener('mouseleave', () => {
             this.startAutoPlay();
         });
@@ -557,26 +535,26 @@ class ImageSlider {
 // Initialize slider when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     const slider = new ImageSlider();
-    
+
     // Optional: Enable auto-play
     // slider.startAutoPlay(4000);
     // slider.enableAutoPlayPause();
-    
+
     // Add loading animation to images
     const images = document.querySelectorAll('.card-image img');
     images.forEach((img, index) => {
         img.style.animationDelay = `${index * 0.1}s`;
-        
+
         img.addEventListener('load', () => {
             img.style.opacity = '1';
         });
-        
+
         // Handle image loading errors
         img.addEventListener('error', () => {
             img.src = 'https://via.placeholder.com/400x500/e2e8f0/64748b?text=Image+Not+Found';
         });
     });
-    
+
     // Add smooth scroll behavior
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -590,7 +568,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-    
+
     // Performance optimization: Lazy loading for images
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
@@ -603,7 +581,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         });
-        
+
         document.querySelectorAll('img[data-src]').forEach(img => {
             imageObserver.observe(img);
         });
@@ -635,3 +613,114 @@ if ('performance' in window) {
         console.log(`Page loaded in ${loadTime.toFixed(2)}ms`);
     });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const track = document.querySelector("#gallery-track");
+    const prevBtn_3 = document.querySelector("#prevBtn-3");
+    const nextBtn_3 = document.querySelector("#nextBtn-3");
+    let visible = 4; 
+    let index;
+    let slideWidth;
+    let allSlides;
+    let totalRealSlides;
+    
+    function cloneSlides() {
+        Array.from(track.children).forEach(el => {
+            if (el.dataset.clone) el.remove();
+        });
+        
+        const currentSlides = Array.from(track.children);
+        totalRealSlides = currentSlides.length;
+        
+        const firstClones = currentSlides.slice(0, visible).map((s, i) => {
+            let c = s.cloneNode(true);
+            c.dataset.clone = "first";
+            return c;
+        });
+        
+        const lastClones = currentSlides.slice(-visible).map((s, i) => {
+            let c = s.cloneNode(true);
+            c.dataset.clone = "last";
+            return c;
+        });
+        
+        firstClones.forEach(c => track.appendChild(c));
+        lastClones.reverse().forEach(c => track.insertBefore(c, track.firstChild));
+        
+        allSlides = Array.from(track.children);
+        index = visible;
+    }
+    
+    function updateResponsive() {
+        const w = window.innerWidth;
+        if (w <= 480) visible = 1;
+        else if (w <= 768) visible = 2;
+        else if (w <= 1024) visible = 3;
+        else visible = 4;
+        
+        cloneSlides();
+        
+        const basic = 100 / visible;
+        allSlides.forEach(el => {
+            el.style.flex = `0 0 ${basic}%`;
+            el.style.minWidth = `${basic}%`;
+        });
+        
+        slideWidth = track.clientWidth / visible;
+        goTo(index, false);
+    }
+    
+    function goTo(i, animate = true) {
+        track.style.transition = animate ? "transform 0.5s ease" : "none";
+        track.style.transform = `translateX(-${i * (100 / visible)}%)`;
+    }
+    
+    function next_3() {
+        index++;
+        goTo(index);
+    }
+    
+    function prev_3() {
+        index--;
+        goTo(index);
+    }
+    
+    track.addEventListener("transitionend", () => {
+        if (index >= visible + totalRealSlides) {
+            track.style.transition = "none";
+            index = visible;
+            goTo(index, false);
+            resetAuto();
+        }
+        else if (index < visible) {
+            track.style.transition = "none";
+            index = visible + totalRealSlides - 1;
+            goTo(index, false);
+            resetAuto();
+        }
+    });
+    
+    nextBtn_3.addEventListener("click", () => {
+        resetAuto();
+        next_3();
+    });
+    
+    prevBtn_3.addEventListener("click", () => {
+        resetAuto();
+        prev_3();
+    });
+    
+    let autoSlide = setInterval(next_3, 5000);
+    
+    track.addEventListener("mouseenter", () => clearInterval(autoSlide));
+    track.addEventListener("mouseleave", () => autoSlide = setInterval(next_3, 5000));
+    
+    function resetAuto() {
+        clearInterval(autoSlide);
+        autoSlide = setInterval(next_3, 5000);
+    }
+    
+    window.addEventListener("resize", updateResponsive);
+    updateResponsive();
+    goTo(index, false);
+});
