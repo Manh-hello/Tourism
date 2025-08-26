@@ -433,6 +433,14 @@ section {
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+    opacity: 0;
+}
+
+.new-card.show{
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .new-card:hover {
@@ -520,6 +528,12 @@ section {
 .new-btn:hover::before {
     opacity: 1;
 }
+
+.new-card:nth-child(1) { transition-delay: 0s; }
+.new-card:nth-child(2) { transition-delay: 0.1s; }
+.new-card:nth-child(3) { transition-delay: 0.2s; }
+.new-card:nth-child(4) { transition-delay: 0.3s; }
+.new-card:nth-child(5) { transition-delay: 0.4s; }
 
 /* Services Section */
 .services {

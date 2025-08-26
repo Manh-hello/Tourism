@@ -618,73 +618,73 @@ document.addEventListener("DOMContentLoaded", () => {
     const track = document.querySelector("#gallery-track");
     const prevBtn_3 = document.querySelector("#prevBtn-3");
     const nextBtn_3 = document.querySelector("#nextBtn-3");
-    let visible = 4; 
+    let visible = 4;
     let index;
     let slideWidth;
     let allSlides;
     let totalRealSlides;
-    
+
     function cloneSlides() {
         Array.from(track.children).forEach(el => {
             if (el.dataset.clone) el.remove();
         });
-        
+
         const currentSlides = Array.from(track.children);
         totalRealSlides = currentSlides.length;
-        
+
         const firstClones = currentSlides.slice(0, visible).map((s, i) => {
             let c = s.cloneNode(true);
             c.dataset.clone = "first";
             return c;
         });
-        
+
         const lastClones = currentSlides.slice(-visible).map((s, i) => {
             let c = s.cloneNode(true);
             c.dataset.clone = "last";
             return c;
         });
-        
+
         firstClones.forEach(c => track.appendChild(c));
         lastClones.reverse().forEach(c => track.insertBefore(c, track.firstChild));
-        
+
         allSlides = Array.from(track.children);
         index = visible;
     }
-    
+
     function updateResponsive() {
         const w = window.innerWidth;
         if (w <= 480) visible = 1;
         else if (w <= 768) visible = 2;
         else if (w <= 1024) visible = 3;
         else visible = 4;
-        
+
         cloneSlides();
-        
+
         const basic = 100 / visible;
         allSlides.forEach(el => {
             el.style.flex = `0 0 ${basic}%`;
             el.style.minWidth = `${basic}%`;
         });
-        
+
         slideWidth = track.clientWidth / visible;
         goTo(index, false);
     }
-    
+
     function goTo(i, animate = true) {
         track.style.transition = animate ? "transform 0.5s ease" : "none";
         track.style.transform = `translateX(-${i * (100 / visible)}%)`;
     }
-    
+
     function next_3() {
         index++;
         goTo(index);
     }
-    
+
     function prev_3() {
         index--;
         goTo(index);
     }
-    
+
     track.addEventListener("transitionend", () => {
         if (index >= visible + totalRealSlides) {
             track.style.transition = "none";
@@ -699,28 +699,47 @@ document.addEventListener("DOMContentLoaded", () => {
             resetAuto();
         }
     });
-    
+
     nextBtn_3.addEventListener("click", () => {
         resetAuto();
         next_3();
     });
-    
+
     prevBtn_3.addEventListener("click", () => {
         resetAuto();
         prev_3();
     });
-    
+
     let autoSlide = setInterval(next_3, 5000);
-    
+
     track.addEventListener("mouseenter", () => clearInterval(autoSlide));
     track.addEventListener("mouseleave", () => autoSlide = setInterval(next_3, 5000));
-    
+
     function resetAuto() {
         clearInterval(autoSlide);
         autoSlide = setInterval(next_3, 5000);
     }
-    
+
     window.addEventListener("resize", updateResponsive);
     updateResponsive();
     goTo(index, false);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".new-card");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.2
+    });
+
+    cards.forEach(card => {
+        observer.observe(card);
+    });
 });
