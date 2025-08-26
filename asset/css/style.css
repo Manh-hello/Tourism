@@ -273,7 +273,7 @@ section {
     position: relative;
 }
 
-.section-title strong{
+.pn{
     font-size: clamp(2rem, 5vw, 4rem);
 }
 
