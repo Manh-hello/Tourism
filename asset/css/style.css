@@ -399,7 +399,10 @@ section {
     position: relative;
 }
 
-.feature-card:nth-child(1){background-image: url("../img/beautiful/img1.jpg");}
+.feature-card:nth-child(1){
+    background-image: url("../img/beautiful/img1.jpg");
+    background-position: bottom;
+}
 .feature-card:nth-child(2){background-image: url("../img/beautiful/img2.jpg");}
 .feature-card:nth-child(3){background-image: url("../img/beautiful/img3.jpg");}
 .feature-card:nth-child(4){background-image: url("../img/beautiful/img4.jpg");}
