@@ -376,9 +376,9 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     text-align: center;
-    background-size: cover;
-    background-position: center;
     background-repeat: no-repeat;
+    background-position: top left, top right, bottom left, bottom right;
+    background-size: 50% 50%;
 }
 
 .feature-card:hover {
@@ -400,12 +400,34 @@ section {
 }
 
 .feature-card:nth-child(1){
-    background-image: url("../img/beautiful/img1.jpg");
-    background-position: bottom;
+    background-image: 
+        url("../img/beautiful/img1.jpg"),
+        url("../img/beautiful/img5.jpg"),
+        url("../img/beautiful/img10.jpg"),
+        url("../img/beautiful/img15.jpg");
+    
 }
-.feature-card:nth-child(2){background-image: url("../img/beautiful/img2.jpg");}
-.feature-card:nth-child(3){background-image: url("../img/beautiful/img3.jpg");}
-.feature-card:nth-child(4){background-image: url("../img/beautiful/img4.jpg");}
+.feature-card:nth-child(2){
+    background-image: 
+        url("../img/beautiful/img2.jpg"),
+        url("../img/beautiful/img6.jpg"),
+        url("../img/beautiful/img11.jpg"),
+        url("../img/beautiful/img16.jpg"); 
+}
+.feature-card:nth-child(3){
+    background-image: 
+        url("../img/beautiful/img3.jpg"),
+        url("../img/beautiful/img7.jpg"),
+        url("../img/beautiful/img12.jpg"),
+        url("../img/beautiful/img17.jpg");
+}
+.feature-card:nth-child(4){
+    background-image: 
+        url("../img/beautiful/img4.jpg"),
+        url("../img/beautiful/img8.jpg"),
+        url("../img/beautiful/img13.jpg"),
+        url("../img/beautiful/img18.jpg");
+}
 
 .feature-icon {
     width: 80px;
@@ -890,6 +912,9 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
     position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .pricing-card:hover {
@@ -899,30 +924,22 @@ section {
 
 .pricing-card:nth-child(1) .pricing-header {
     background-image: url('../img/img27.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 .pricing-card:nth-child(2) .pricing-header {
     background-image: url('../img/img28.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 .pricing-card:nth-child(3) .pricing-header {
     background-image: url('../img/img29.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 .pricing-card:nth-child(4) .pricing-header {
     background-image: url('../img/img30.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+}
+
+.pricing-card:nth-child(5) .pricing-header {
+    background-image: url('../img/img31.jpg');
 }
 
 .pricing-header {
@@ -1004,65 +1021,6 @@ section {
 
 .excludes li {
     color: #dc2626;
-}
-
-.pricing-included-section {
-    padding: 40px 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.included-card {
-    background: #fff;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    max-width: 700px;
-    width: 100%;
-    padding: 24px 32px;
-    transition: transform 0.3s ease;
-}
-
-.included-card:hover {
-    transform: translateY(-4px);
-}
-
-.included-header h3 {
-    font-size: 1.4rem;
-    color: #333;
-    margin-bottom: 8px;
-}
-
-.included-header p {
-    font-size: 1rem;
-    color: #666;
-    margin-bottom: 16px;
-}
-
-.included-body {
-    padding-top: 10px;
-}
-
-.included ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.included ul li {
-    position: relative;
-    padding-left: 28px;
-    margin-bottom: 12px;
-    font-size: 1rem;
-    color: #444;
-}
-
-.included ul li::before {
-    content: "✔";
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #4CAF50;
-    font-weight: bold;
 }
 
 /* gallery-camping */
