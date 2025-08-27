@@ -11,12 +11,17 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    /* font-family: 'Inter', sans-serif; */
+    font-family: 'Be Vietnam Pro', serif;
     line-height: 1.6;
     color: #333;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: 'Noto Serif Display', serif;
 }
 
 .container {
@@ -172,7 +177,7 @@ body {
 }
 
 .hero-subtitle {
-    font-size: clamp(1.1rem, 3vw, 1.5rem);
+    font-size: clamp(1.2rem, 3.5vw, 1.6rem);
     font-weight: 300;
     margin-bottom: 2.5rem;
     line-height: 1.6;
