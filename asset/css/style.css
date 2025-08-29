@@ -943,10 +943,10 @@ section {
 }
 
 .pricing-header {
-    background: linear-gradient(135deg, #16a34a, #15803d);
     color: white;
     padding: 2rem;
     text-align: center;
+    min-height: 200px;
 }
 
 .pricing-header h4 {
