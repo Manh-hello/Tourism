@@ -333,8 +333,8 @@ class ImageSlider {
         this.totalSlides = Math.ceil(this.totalImages / this.imagesPerSlide);
 
         this.sliderTrack = document.getElementById('slider-track');
-        this.prevBtn = document.getElementById('prev-btn');
-        this.nextBtn = document.getElementById('next-btn');
+        this.prevBtn = document.getElementById('prev-btn-end');
+        this.nextBtn = document.getElementById('next-btn-end');
         this.indicatorsContainer = document.getElementById('indicators2');
         this.currentSlideSpan = document.getElementById('current-slide');
         this.totalSlidesSpan = document.getElementById('total-slides');
@@ -368,7 +368,6 @@ class ImageSlider {
 
         this.totalSlides = Math.ceil(this.totalImages / this.imagesPerSlide);
 
-        // Reset to first slide if current slide is out of bounds
         if (this.currentSlide >= this.totalSlides) {
             this.currentSlide = 0;
         }
@@ -518,7 +517,6 @@ class ImageSlider {
         }
     }
 
-    // Pause auto-play on hover
     enableAutoPlayPause() {
         const slider = document.querySelector('.slider');
 
@@ -532,15 +530,10 @@ class ImageSlider {
     }
 }
 
-// Initialize slider when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     const slider = new ImageSlider();
-
-    // Optional: Enable auto-play
-    // slider.startAutoPlay(4000);
-    // slider.enableAutoPlayPause();
-
-    // Add loading animation to images
+    slider.startAutoPlay(5000);
+    slider.enableAutoPlayPause();
     const images = document.querySelectorAll('.card-image img');
     images.forEach((img, index) => {
         img.style.animationDelay = `${index * 0.1}s`;
@@ -549,13 +542,11 @@ document.addEventListener('DOMContentLoaded', () => {
             img.style.opacity = '1';
         });
 
-        // Handle image loading errors
         img.addEventListener('error', () => {
             img.src = 'https://via.placeholder.com/400x500/e2e8f0/64748b?text=Image+Not+Found';
         });
     });
 
-    // Add smooth scroll behavior
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -569,7 +560,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Performance optimization: Lazy loading for images
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
@@ -588,12 +578,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Add CSS custom properties for dynamic theming
 document.documentElement.style.setProperty('--primary-color', '#3b82f6');
 document.documentElement.style.setProperty('--secondary-color', '#1e293b');
 document.documentElement.style.setProperty('--accent-color', '#64748b');
 
-// Utility function for debouncing resize events
 function debounce(func, wait) {
     let timeout;
     return function executedFunction(...args) {
@@ -606,7 +594,6 @@ function debounce(func, wait) {
     };
 }
 
-// Add performance monitoring (optional)
 if ('performance' in window) {
     window.addEventListener('load', () => {
         const loadTime = performance.now();
@@ -741,5 +728,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     cards.forEach(card => {
         observer.observe(card);
+    });
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const featuresGrid = document.getElementById('featuresGrid');
+    const cards = document.querySelectorAll('.feature-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mouseenter', function () {
+            cards.forEach(c => c.classList.remove('expanded'));
+            this.classList.add('expanded');
+        });
+
+        card.addEventListener('mouseleave', function () {
+            setTimeout(() => {
+                if (!card.matches(':hover') && !featuresGrid.matches(':hover')) {
+                    cards.forEach(c => c.classList.remove('expanded'));
+                }
+            }, 100);
+        });
+    });
+
+    featuresGrid.addEventListener('mouseleave', function () {
+        setTimeout(() => {
+            cards.forEach(c => c.classList.remove('expanded'));
+        }, 100);
     });
 });
