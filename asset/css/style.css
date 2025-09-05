@@ -1858,6 +1858,10 @@ section {
         padding: 2rem 1.5rem;
     }
 
+    .features-image-gallery{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .gallery-wrap {
         min-width: 100%;
     }
