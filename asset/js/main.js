@@ -4,6 +4,7 @@ const navToggle = document.getElementById('nav-toggle');
 const navMenu = document.getElementById('nav-menu');
 const backToTop = document.getElementById('backToTop');
 const fabButton = document.getElementById('fabButton');
+const navButton = document.querySelector('.nav-button');
 
 // Carousel Elements
 const slides = document.querySelectorAll('.carousel-slide');
@@ -20,6 +21,28 @@ navToggle.addEventListener('click', () => {
     navToggle.classList.toggle('active');
 });
 
+navButton.addEventListener('click', function (e) {
+        // Add ripple effect
+        const ripple = document.createElement('span');
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.classList.add('ripple');
+
+        this.appendChild(ripple);
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
 // Close mobile menu when clicking on a link
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {

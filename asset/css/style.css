@@ -81,6 +81,7 @@ h6 {
 .nav-menu {
     display: flex;
     gap: 2rem;
+    align-items: center;
 }
 
 .nav-link {
@@ -111,6 +112,30 @@ h6 {
     width: 100%;
 }
 
+.nav-button{
+    text-decoration: none;
+    background: #10b981;
+    color: white;
+    border: none;
+    padding: 0.8rem 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    animation: fadeInUp 1s ease-out 0.6s both;
+}
+
+.nav-button:hover{
+    background: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;
@@ -128,7 +153,7 @@ h6 {
 /* Hero Section */
 .hero {
     position: relative;
-    height: 100vh;
+    height: 90vh;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -1705,6 +1730,10 @@ section {
         display: flex;
     }
 
+    .nav-btn{
+        display: none;
+    }
+
     .nav-toggle.active span:nth-child(1) {
         transform: rotate(45deg) translate(5px, 5px);
     }
@@ -1723,8 +1752,9 @@ section {
     }
 
     .carousel-btn {
-        width: 40px;
-        height: 40px;
+        width: 60px;
+        height: 100px;
+        background: transparent;
         margin-top: 100px;
     }
 
