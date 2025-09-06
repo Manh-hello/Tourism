@@ -46,6 +46,14 @@ window.addEventListener('scroll', () => {
     }
 });
 
+document.getElementById('to-top').addEventListener('click', (e) => {
+  e.preventDefault();
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
 // Back to Top Functionality
 backToTop.addEventListener('click', () => {
     window.scrollTo({
