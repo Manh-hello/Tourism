@@ -1036,19 +1036,19 @@ section {
 }
 
 .pricing-card:nth-child(1) .pricing-header {
-    background-image: url('../img/img27.png');
-}
-
-.pricing-card:nth-child(2) .pricing-header {
-    background-image: url('../img/img28.jpg');
-}
-
-.pricing-card:nth-child(3) .pricing-header {
     background-image: url('../img/img29.jpg');
 }
 
-.pricing-card:nth-child(4) .pricing-header {
+.pricing-card:nth-child(2) .pricing-header {
     background-image: url('../img/img30.png');
+}
+
+.pricing-card:nth-child(3) .pricing-header {
+    background-image: url('../img/img27.png');
+}
+
+.pricing-card:nth-child(4) .pricing-header {
+    background-image: url('../img/img28.jpg');
 }
 
 .pricing-card:nth-child(5) .pricing-header {
@@ -1227,16 +1227,16 @@ section {
 }
 
 .contact-item-camping h4 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 600;
-    color: #16a34a;
+    color: white;
     margin-bottom: 0.5rem;
 }
 
 .contact-item-camping p {
-    color: #6b7280;
+    color: white;
     margin-bottom: 1rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
 }
 
 .contact-details-camping {
