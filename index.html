@@ -23,12 +23,12 @@
                 </a>
             </div>
             <div class="nav-menu" id="nav-menu">
-                <a href="#about" class="nav-link">Giới thiệu</a>
-                <a href="#features" class="nav-link">Trải nghiệm</a>
-                <a href="#news" class="nav-link">Tin tức</a>
-                <a href="#services" class="nav-link">Dịch vụ</a>
-                <a href="#contact" class="nav-link">Liên hệ</a>
-                <a class="nav-button nav-link">ĐẶT LỊCH NGAY >></a>
+                <a id="nav-about" class="nav-link">Giới thiệu</a>
+                <a id="nav-features" class="nav-link">Trải nghiệm</a>
+                <a id="nav-news" class="nav-link">Tin tức</a>
+                <a id="nav-services" class="nav-link">Dịch vụ</a>
+                <a id="nav-contact" class="nav-link">Liên hệ</a>
+                <a id="nav-get" class="nav-button nav-link">ĐẶT LỊCH NGAY >></a>
             </div>
             <div class="nav-toggle" id="nav-toggle">
                 <span></span>
@@ -36,7 +36,7 @@
                 <span></span>
             </div>
         </div>
-        
+
     </nav>
 
     <!-- Hero Section with Image Carousel -->
@@ -69,7 +69,7 @@
         </div>
 
         <div class="hero-content">
-            <h1 class="hero-title">Làng Du Lịch Văn Hoá<br/>Đặc Trưng<br/><strong>Phong Nam</strong></h1>
+            <h1 class="hero-title">Làng Du Lịch Văn Hoá<br />Đặc Trưng<br /><strong>Phong Nam</strong></h1>
             <!-- <button class="cta-button">
                 Khám phá ngay
                 <i class="fas fa-arrow-right"></i>
@@ -83,6 +83,12 @@
             <i class="fas fa-chevron-right"></i>
         </button>
 
+        <div class="down_wrap">
+            <div>
+                <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div>
+
         <div class="carousel-indicators" id="indicators">
             <span class="indicator active" data-slide="0"></span>
             <span class="indicator" data-slide="1"></span>
@@ -95,12 +101,12 @@
 
     <!-- About -->
     <section class="about" id="about">
-        <!-- <div class="video-bg">
-            <video autoplay muted loop playsinline>
-                <source src="">
+        <div class="video-bg">
+            <video autoplay muted loop playsinline disablepictureinpicture>
+                <source src="./asset/video/video-about.mp4" type="video/mp4">
             </video>
-        </div> -->
-        <div class="container">
+        </div>
+        <div class="container about-bg">
             <div class="section-header">
                 <h2 class="section-title">Về Làng Văn Hóa Đặc Trưng<br /><strong class="pn">Phong Nam</strong></h2>
             </div>
@@ -114,7 +120,8 @@
                     </p>
                     <p class="about-paragraph">
                         Phong Nam níu chân du khách bằng vẻ đẹp bình dị của ngõ nhỏ rợp bóng tre, mái ngói rêu phong,
-                        giếng nước sân đình, và tiếng gà gáy mỗi sớm mai. Nơi đây không chỉ là điểm đến, mà là hành trình
+                        giếng nước sân đình, và tiếng gà gáy mỗi sớm mai. Nơi đây không chỉ là điểm đến, mà là hành
+                        trình
                         trở về – trở về với ký ức, với những giá trị văn hóa thuần Việt, với sự gắn kết con
                         người và thiên nhiên một cách mộc mạc và tinh khiết.
                     </p>
@@ -156,7 +163,10 @@
                             </div>
                             <div class="feature-text">
                                 <h3 class="feature-title">Không gian làng quê nguyên bản</h3>
-                                <p class="feature-description">Dạo bước qua những con đường làng với hai bên là hàng cau, bụi chuối, cánh đồng bát ngát. Ghé thăm nhà cổ hàng trăm năm tuổi, nghe kể chuyện tổ tiên và phong tục quê nhà. Hòa mình vào thiên nhiên: ruộng lúa chín vàng, dòng mương trong vắt, lũy tre vi vu trong gió.</p>
+                                <p class="feature-description">Dạo bước qua những con đường làng với hai bên là hàng
+                                    cau, bụi chuối, cánh đồng bát ngát. Ghé thăm nhà cổ hàng trăm năm tuổi, nghe kể
+                                    chuyện tổ tiên và phong tục quê nhà. Hòa mình vào thiên nhiên: ruộng lúa chín vàng,
+                                    dòng mương trong vắt, lũy tre vi vu trong gió.</p>
                             </div>
                         </div>
                         <div class="features-image-gallery">
@@ -184,7 +194,10 @@
                             </div>
                             <div class="feature-text">
                                 <h3 class="feature-title">Trải nghiệm văn hóa lịch sử</h3>
-                                <p class="feature-description">Làng cổ Phong Nam là ngôi làng hơn 600 năm tuổi, lưu giữ kiến trúc cổ kính như đình làng, giếng cổ, nhà rường, mái ngói rêu phong. Người dân nơi đây vẫn gìn giữ nghề truyền thống: trồng lúa, chăn nuôi, làm bánh tráng, bánh nậm, bánh lọc, đan lát… cùng tinh hoa ẩm thực quê.</p>
+                                <p class="feature-description">Làng cổ Phong Nam là ngôi làng hơn 600 năm tuổi, lưu giữ
+                                    kiến trúc cổ kính như đình làng, giếng cổ, nhà rường, mái ngói rêu phong. Người dân
+                                    nơi đây vẫn gìn giữ nghề truyền thống: trồng lúa, chăn nuôi, làm bánh tráng, bánh
+                                    nậm, bánh lọc, đan lát… cùng tinh hoa ẩm thực quê.</p>
                             </div>
                         </div>
                         <div class="features-image-gallery">
@@ -212,7 +225,10 @@
                             </div>
                             <div class="feature-text">
                                 <h3 class="feature-title">Trải nghiệm nông nghiệp</h3>
-                                <p class="feature-description">Một ngày làm nông dân: cấy lúa, bắt cá, tát mương, chăn vịt. Học làm bánh dân gian: bánh lọc, bánh nậm, bánh ít lá gai, nướng bánh tráng thủ công. Tham gia trò chơi dân gian: bịt mắt bắt vịt, kéo co, nhảy bao bố, thi gánh nước.</p>
+                                <p class="feature-description">Một ngày làm nông dân: cấy lúa, bắt cá, tát mương, chăn
+                                    vịt. Học làm bánh dân gian: bánh lọc, bánh nậm, bánh ít lá gai, nướng bánh tráng thủ
+                                    công. Tham gia trò chơi dân gian: bịt mắt bắt vịt, kéo co, nhảy bao bố, thi gánh
+                                    nước.</p>
                             </div>
                         </div>
                         <div class="features-image-gallery">
@@ -240,7 +256,10 @@
                             </div>
                             <div class="feature-text">
                                 <h3 class="feature-title">Giá trị giáo dục sâu sắc</h3>
-                                <p class="feature-description">Rèn luyện tính tự lập, tinh thần đồng đội cho trẻ. Nuôi dưỡng tình yêu thiên nhiên, tôn trọng lao động và giữ gìn bản sắc văn hóa dân tộc. Phù hợp cho các chương trình học tập trải nghiệm, ngoại khóa trường học hoặc tour gia đình.</p>
+                                <p class="feature-description">Rèn luyện tính tự lập, tinh thần đồng đội cho trẻ. Nuôi
+                                    dưỡng tình yêu thiên nhiên, tôn trọng lao động và giữ gìn bản sắc văn hóa dân tộc.
+                                    Phù hợp cho các chương trình học tập trải nghiệm, ngoại khóa trường học hoặc tour
+                                    gia đình.</p>
                             </div>
                         </div>
                         <div class="features-image-gallery">
@@ -301,9 +320,9 @@
                     <h3 class="new-title">Cùng đến với TP. Đà Nẵng. Ít ai ngờ rằng vẫn có một nơi còn lưu giữ trọn vẹn
                         những nét đẹp văn hóa, kiến trúc truyền thống của người Việt xưa giữa lòng thành phố, một làng
                         cổ tồn tại hàng trăm năm qua. Đó chính là làng cổ Phong Nam.</h3>
-                    <div class="new-div"> 
-                        <a href="https://vtv.vn/video/buoi-sang-tai-lang-co-phong-nam-108674004.htm"
-                            class="new-btn" target="_blank">Chi tiết</a>
+                    <div class="new-div">
+                        <a href="https://vtv.vn/video/buoi-sang-tai-lang-co-phong-nam-108674004.htm" class="new-btn"
+                            target="_blank">Chi tiết</a>
                     </div>
                 </div>
 
@@ -976,7 +995,8 @@
             </div>
 
             <div class="contact-cta">
-                <p class="contact-note">Đặt tour trải nghiệm theo nhóm, tour trường học hoặc tour nước ngoài – cần liên hệ
+                <p class="contact-note">Đặt tour trải nghiệm theo nhóm, tour trường học hoặc tour nước ngoài – cần liên
+                    hệ
                     trước</p>
                 <!-- <button class="cta-button">
                     Đặt tour ngay
