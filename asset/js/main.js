@@ -767,3 +767,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 100);
     });
 });
+
+document.querySelectorAll(".read-more-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+        const desc = btn.previousElementSibling;
+        desc.classList.toggle("text-truncate");
+        btn.textContent = desc.classList.contains("text-truncate") ? "Đọc tiếp" : "Thu gọn";
+    });
+});
